@@ -1,0 +1,11 @@
+{
+  "setupFiles": [
+    "<rootDir>/jest.setup.js"
+  ],
+  "unmockedModulePathPatterns": [
+    "<rootDir>/node_modules/babel-polyfill"
+  ],
+  "moduleNameMapper": {
+    "^~(.*)$": "<rootDir>/src$1"
+  }
+}
