@@ -5,11 +5,11 @@
 import { AbstractModelClass } from './AbstractModel'
 
 describe('AbstractModelClass', () => {
-  const model: AbstractModelClass = new AbstractModelClass({ value: 100 })
+  let model = new AbstractModelClass({ value: 10 })
   test('#getValue', () => {
-    expect(model.getValue()).toEqual(100)
+    expect(model.getValue()).toEqual(10)
   })
   test('#getStringValue', () => {
-    expect(model.getStringValue()).toEqual('100')
+    expect(model.getStringValue()).toEqual('10')
   })
 })

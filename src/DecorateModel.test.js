@@ -2,20 +2,17 @@
 // @flow
 // _______________________________________________________
 
-import { DecorateModel } from './DecorateModel'
+import { DecorateModelClass } from './DecorateModel'
 
 describe('DecorateModel', () => {
-  const model: DecorateModel = new DecorateModel({ name: 'jhon', color: '#F00' })
+  let model = new DecorateModelClass({ value: 20, name: 'temperature' })
   test('#getValue', () => {
-    expect(model.getValue()).toEqual(0)
+    expect(model.getValue()).toEqual(20)
   })
   test('#getStringValue', () => {
-    expect(model.getStringValue()).toEqual('0')
+    expect(model.getStringValue()).toEqual('20')
   })
   test('#getName', () => {
-    expect(model.getName()).toEqual('jhon')
-  })
-  test('#getColor', () => {
-    expect(model.getColor()).toEqual('#F00')
+    expect(model.getName()).toEqual('temperature')
   })
 })

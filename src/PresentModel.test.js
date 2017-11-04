@@ -2,20 +2,14 @@
 // @flow
 // _______________________________________________________
 
-import { PresentModel } from './PresentModel'
+import { PresentModelClass } from './PresentModel'
 
 describe('PresentModel', () => {
-  const model: PresentModel = new PresentModel({ id: 'yyyy' })
+  let model = new PresentModelClass({ value: 30, name: 'temperature', unit: '℃' })
   test('#getValue', () => {
-    expect(model.getValue()).toEqual(0)
+    expect(model.getValue()).toEqual(30)
   })
-  test('#getStringValue', () => {
-    expect(model.getStringValue()).toEqual('0')
-  })
-  test('#getID', () => {
-    expect(model.getID()).toEqual('yyyy')
-  })
-  test('#getType', () => {
-    expect(model.getType()).toEqual(0)
+  test('#getMessage', () => {
+    expect(model.getMessage()).toEqual('Measurement item is temperature: 30℃')
   })
 })
