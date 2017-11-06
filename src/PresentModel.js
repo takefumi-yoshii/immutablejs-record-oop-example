@@ -20,7 +20,7 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function PresentModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+export function PresentModel<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
   return class extends DecorateModel(props(arg)) {
     getMessagePrefix (): string {
       return this.get('message_prefix')

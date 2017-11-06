@@ -23,7 +23,7 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function DecorateModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+export function DecorateModel<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
   return class extends AbstractModel(props(arg)) {
     getName (): string {
       return this.get('name')

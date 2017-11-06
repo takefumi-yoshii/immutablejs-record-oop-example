@@ -19,7 +19,7 @@ export function props<T> (arg: ?T): P & T {
   }
 }
 
-export function AbstractModel<T: Object & P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+export function AbstractModel<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
   return class extends Record(props(arg)) {
     getValue (): number {
       return this.get('value')
