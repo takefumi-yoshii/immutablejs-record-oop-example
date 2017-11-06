@@ -2,7 +2,7 @@
 // @flow
 // _______________________________________________________
 
-import { AbstractClass } from './AbstractFactory'
+import { AbstractClass } from './abstract'
 
 describe('AbstractClass', () => {
   let model = new AbstractClass({ value: 10 })

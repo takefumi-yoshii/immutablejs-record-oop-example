@@ -2,7 +2,7 @@
 // @flow
 // _______________________________________________________
 
-import { PresentClass } from './PresentFactory'
+import { PresentClass } from './present'
 
 describe('PresentFactory', () => {
   let model = new PresentClass({ value: 30, name: 'temperature', unit: '℃' })

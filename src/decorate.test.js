@@ -2,7 +2,7 @@
 // @flow
 // _______________________________________________________
 
-import { DecorateFactoryClass } from './DecorateFactory'
+import { DecorateFactoryClass } from './decorate'
 
 describe('DecorateFactory', () => {
   let model = new DecorateFactoryClass({ value: 10, name: 'temperature' })

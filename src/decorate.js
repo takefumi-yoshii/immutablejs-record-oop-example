@@ -3,7 +3,7 @@
 // _______________________________________________________
 
 import type { RecordInstance, RecordOf } from 'immutable'
-import { AbstractFactory, type IF as _IF, type P as _P, props as _props } from './AbstractFactory'
+import { AbstractFactory, type IF as _IF, type P as _P, props as _props } from './abstract'
 
 export type P = _P & {
   name: string;

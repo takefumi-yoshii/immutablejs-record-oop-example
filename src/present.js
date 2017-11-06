@@ -3,7 +3,7 @@
 // _______________________________________________________
 
 import type { RecordInstance, RecordOf } from 'immutable'
-import { DecorateFactory, type IF as _IF, type P as _P, props as _props } from './DecorateFactory'
+import { DecorateFactory, type IF as _IF, type P as _P, props as _props } from './decorate'
 
 export type P = _P & {
   message_prefix: string;
