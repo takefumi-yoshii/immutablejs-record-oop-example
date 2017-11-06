@@ -2,10 +2,10 @@
 // @flow
 // _______________________________________________________
 
-import { PresentModelClass } from './PresentModel'
+import { PresentClass } from './PresentFactory'
 
-describe('PresentModel', () => {
-  let model = new PresentModelClass({ value: 30, name: 'temperature', unit: '℃' })
+describe('PresentFactory', () => {
+  let model = new PresentClass({ value: 30, name: 'temperature', unit: '℃' })
   test('#getValue', () => {
     expect(model.getValue()).toEqual(30)
   })

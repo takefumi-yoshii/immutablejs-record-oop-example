@@ -2,10 +2,10 @@
 // @flow
 // _______________________________________________________
 
-import { AbstractModelClass } from './AbstractModel'
+import { AbstractClass } from './AbstractFactory'
 
-describe('AbstractModelClass', () => {
-  let model = new AbstractModelClass({ value: 10 })
+describe('AbstractClass', () => {
+  let model = new AbstractClass({ value: 10 })
   test('#getValue', () => {
     expect(model.getValue()).toEqual(10)
   })

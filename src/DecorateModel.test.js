@@ -2,10 +2,10 @@
 // @flow
 // _______________________________________________________
 
-import { DecorateModelClass } from './DecorateModel'
+import { DecorateFactoryClass } from './DecorateFactory'
 
-describe('DecorateModel', () => {
-  let model = new DecorateModelClass({ value: 10, name: 'temperature' })
+describe('DecorateFactory', () => {
+  let model = new DecorateFactoryClass({ value: 10, name: 'temperature' })
   test('#getValue', () => {
     model = model.setValue(20)
     expect(model.getValue()).toEqual(20)

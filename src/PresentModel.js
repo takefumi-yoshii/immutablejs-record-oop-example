@@ -3,7 +3,7 @@
 // _______________________________________________________
 
 import type { RecordInstance, RecordOf } from 'immutable'
-import { DecorateModel, type IF as _IF, type P as _P, props as _props } from './DecorateModel'
+import { DecorateFactory, type IF as _IF, type P as _P, props as _props } from './DecorateFactory'
 
 export type P = _P & {
   message_prefix: string;
@@ -20,8 +20,8 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function PresentModel<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
-  return class extends DecorateModel(props(arg)) {
+export function PresentFactory<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+  return class extends DecorateFactory(props(arg)) {
     getMessagePrefix (): string {
       return this.get('message_prefix')
     }
@@ -38,4 +38,4 @@ export function PresentModel<T: Object | P> (arg: ?T): Class<RecordInstance<T> &
   }
 }
 
-export class PresentModelClass extends PresentModel() {}
+export class PresentClass extends PresentFactory() {}
