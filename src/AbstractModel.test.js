@@ -12,4 +12,8 @@ describe('AbstractModelClass', () => {
   test('#getStringValue', () => {
     expect(model.getStringValue()).toEqual('10')
   })
+  test('#setValue', () => {
+    model = model.setValue(100)
+    expect(model.getValue()).toEqual(100)
+  })
 })
