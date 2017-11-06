@@ -8,10 +8,10 @@ import { DecorateModel, type IF as _IF, type P as _P, props as _props } from './
 export type P = _P & {
   message_prefix: string;
 }
-export type IF = _IF & {
+export type IF<T> = _IF<T> & {
   getMessagePrefix (): string;
   getMessage (): string;
-  setMessagePrefix (message_prefix: string): RecordOf<P & IF>;
+  setMessagePrefix (message_prefix: string): RecordOf<T>;
 }
 export function props<T> (arg: ?T): P & T {
   return _props({
@@ -20,13 +20,10 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function PresentModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF> {
+export function PresentModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
   return class extends DecorateModel(props(arg)) {
     getMessagePrefix (): string {
       return this.get('message_prefix')
-    }
-    setMessagePrefix (message_prefix: string): RecordOf<P & IF> {
-      return this.set('message_prefix', message_prefix)
     }
     getMessage (): string {
       const prefix = this.getMessagePrefix()
@@ -34,6 +31,9 @@ export function PresentModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF>
       const value = this.getValue()
       const unit = this.getUnit()
       return `${prefix} ${name}: ${value}${unit}`
+    }
+    setMessagePrefix (message_prefix: string): RecordOf<T> {
+      return this.set('message_prefix', message_prefix)
     }
   }
 }

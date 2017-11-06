@@ -7,6 +7,7 @@ import { DecorateModelClass } from './DecorateModel'
 describe('DecorateModel', () => {
   let model = new DecorateModelClass({ value: 10, name: 'temperature' })
   test('#getValue', () => {
+    model = model.setValue(20)
     expect(model.getValue()).toEqual(20)
   })
   test('#getStringValue', () => {

@@ -9,11 +9,11 @@ export type P = _P & {
   name: string;
   unit: string;
 }
-export type IF = _IF & {
+export type IF<T> = _IF<T> & {
   getName (): string;
   getUnit (): string;
-  setName (name: string): RecordOf<P & IF>;
-  setUnit (unit: string): RecordOf<P & IF>;
+  setName (name: string): RecordOf<T>;
+  setUnit (unit: string): RecordOf<T>;
 }
 export function props<T> (arg: ?T): P & T {
   return _props({
@@ -23,7 +23,7 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function DecorateModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF> {
+export function DecorateModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
   return class extends AbstractModel(props(arg)) {
     getName (): string {
       return this.get('name')
@@ -31,10 +31,10 @@ export function DecorateModel<T: Object> (arg: ?T): Class<RecordInstance<T> & IF
     getUnit (): string {
       return this.get('unit')
     }
-    setName (name: string): RecordOf<P & IF> {
+    setName (name: string): RecordOf<T> {
       return this.set('name', name)
     }
-    setUnit (unit: string): RecordOf<P & IF> {
+    setUnit (unit: string): RecordOf<T> {
       return this.set('unit', unit)
     }
   }
