@@ -1,3 +1,3 @@
 ## immutablejs-record-oop-example
-flow-bin version 0.57.3
-immutable version 4.0.0-rc.3
+flow-bin version 0.58.0  
+immutable version 4.0.0-rc.4
