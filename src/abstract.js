@@ -7,7 +7,7 @@ import { Record, type RecordOf, type RecordInstance } from 'immutable'
 export type P = {
   value: number;
 }
-export type IF<T> = {
+export type RI<T> = RecordInstance<T> & {
   getValue (): number;
   getStringValue (): string;
   setValue (value: number): RecordOf<T>;
@@ -19,7 +19,7 @@ export function props<T> (arg: ?T): P & T {
   }
 }
 
-export function AbstractFactory<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+export function AbstractFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
   return class extends Record(props(arg)) {
     getValue (): number {
       return this.get('value')

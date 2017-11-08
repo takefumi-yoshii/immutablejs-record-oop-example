@@ -2,13 +2,13 @@
 // @flow
 // _______________________________________________________
 
-import type { RecordInstance, RecordOf } from 'immutable'
-import { DecorateFactory, type IF as _IF, type P as _P, props as _props } from './decorate'
+import type { RecordOf } from 'immutable'
+import { DecorateFactory, type RI as _RI, type P as _P, props as _props } from './decorate'
 
 export type P = _P & {
   message_prefix: string;
 }
-export type IF<T> = _IF<T> & {
+export type RI<T> = _RI<T> & {
   getMessagePrefix (): string;
   getMessage (): string;
   setMessagePrefix (message_prefix: string): RecordOf<T>;
@@ -20,7 +20,7 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
-export function PresentFactory<T: Object | P> (arg: ?T): Class<RecordInstance<T> & IF<T>> {
+export function PresentFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
   return class extends DecorateFactory(props(arg)) {
     getMessagePrefix (): string {
       return this.get('message_prefix')
