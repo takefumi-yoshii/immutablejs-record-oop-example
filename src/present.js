@@ -8,11 +8,6 @@ import { DecorateFactory, type RI as _RI, type P as _P, props as _props } from '
 export type P = _P & {
   message_prefix: string;
 }
-export type RI<T> = _RI<T> & {
-  getMessagePrefix (): string;
-  getMessage (): string;
-  setMessagePrefix (message_prefix: string): RecordOf<T>;
-}
 export function props<T> (arg: ?T): P & T {
   return _props({
     message_prefix: 'Measurement item is',
@@ -20,6 +15,11 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
+export type RI<T> = _RI<T> & {
+  getMessagePrefix (): string;
+  getMessage (): string;
+  setMessagePrefix (message_prefix: string): RecordOf<T>;
+}
 export function PresentFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
   return class extends DecorateFactory(props(arg)) {
     getMessagePrefix (): string {

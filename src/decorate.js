@@ -9,12 +9,6 @@ export type P = _P & {
   name: string;
   unit: string;
 }
-export type RI<T> = _RI<T> & {
-  getName (): string;
-  getUnit (): string;
-  setName (name: string): RecordOf<T>;
-  setUnit (unit: string): RecordOf<T>;
-}
 export function props<T> (arg: ?T): P & T {
   return _props({
     name: '',
@@ -23,6 +17,12 @@ export function props<T> (arg: ?T): P & T {
   })
 }
 
+export type RI<T> = _RI<T> & {
+  getName (): string;
+  getUnit (): string;
+  setName (name: string): RecordOf<T>;
+  setUnit (unit: string): RecordOf<T>;
+}
 export function DecorateFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
   return class extends AbstractFactory(props(arg)) {
     getName (): string {
