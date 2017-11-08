@@ -2,24 +2,24 @@
 // @flow
 // _______________________________________________________
 
-import { Record, type RecordOf, type RecordInstance } from 'immutable'
+import { Record, RecordInstance } from 'immutable'
 
-export type P = {
+type P = {
   value: number;
 }
-export function props<T> (arg: ?T): P & T {
+function props<T> (arg: ?T): P & T {
   return {
     value: 0,
     ...arg
   }
 }
 
-export type RI<T> = RecordInstance<T> & {
+declare class RI<T: Object | P> extends RecordInstance<T> {
   getValue (): number;
   getStringValue (): string;
-  setValue (value: number): RecordOf<T>;
+  setValue (value: number): T | this;
 }
-export function AbstractFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
+function AbstractFactory<T: Object | P> (arg: ?T): Class<RI<T> | *> {
   return class extends Record(props(arg)) {
     getValue (): number {
       return this.get('value')
@@ -27,10 +27,17 @@ export function AbstractFactory<T: Object | P> (arg: ?T): Class<RI<T>> {
     getStringValue (): string {
       return `${this.get('value')}`
     }
-    setValue (value: number): RecordOf<T> {
+    setValue (value: number): T | this {
       return this.set('value', value)
     }
   }
 }
 
-export class AbstractClass extends AbstractFactory() {}
+class AbstractClass extends AbstractFactory() {}
+
+export type { P, RI }
+export {
+  props,
+  AbstractFactory,
+  AbstractClass
+}

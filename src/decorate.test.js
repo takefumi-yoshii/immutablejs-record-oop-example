@@ -8,7 +8,6 @@ describe('DecorateFactory', () => {
   let model = new DecorateClass({ value: 10, name: 'temperature' })
   test('#getValue', () => {
     model = model.setValue(20)
-    // model = model.setValue('20') // Error!
     expect(model.getValue()).toEqual(20)
   })
   test('#getStringValue', () => {
